@@ -17,10 +17,17 @@
                 </div>
             </div>
 
-            <div>
-                <p class="font-monospace">User<span></span></p>
-                <hr style="width: 650px;">
-            </div>
+
+
+            @foreach ($comments as $comment)
+                <div>
+                    <p class="font-monospace">{{ $comment->user->name}}<span>:{{$comment->content}}</span></p>
+                    <hr style="width: 650px;">
+                </div>
+            @endforeach
+
+
+
 
             <form action="{{ route('comment.store')}}" method="POST">
                 @csrf

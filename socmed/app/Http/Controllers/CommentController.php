@@ -14,8 +14,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comment = Comment::with('user', 'post')->get();
-        return view('comment', compact('comment'));
+        $comments = Comment::with('user')->get();
+        return view('comment', compact('comments'));
     }
 
     /**
@@ -56,8 +56,8 @@ class CommentController extends Controller
     public function show(string $id)
     {
         $posts = Post::find($id);
-        // $comments = $post->comments()->with('user')->get();
-        return view('comment', compact( 'posts'));
+        $comments = Comment::with('user')->get();
+        return view('comment', compact( 'posts','comments'));
     }
     
     /**
