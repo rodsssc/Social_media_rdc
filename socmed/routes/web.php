@@ -4,10 +4,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('intro');
 });
 
 // Login Routes
@@ -34,6 +35,10 @@ Route::controller(CommentController::class)->group(function () {
     Route::get('/comment/{id}',  'show')->name('comment.show');
     Route::get('/comment', 'index')->name('comment.index');
     Route::post('/comment', 'store')->name('comment.store');
+});
 
-    
+Route::controller(ReactController::class)->group(function (){
+    Route::post('/index','store')->name('index.store');
+
+
 });
